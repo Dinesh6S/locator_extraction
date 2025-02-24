@@ -13,31 +13,13 @@ driver = webdriver.Chrome()
 driver.get("bootswatch.com/default")  # Replace with your target URL
 
 
-
-
-
-enter_email = driver.find_element(By.ID, f"login-user-id")
-enter_email.send_keys('qaadmin@wizfreight.com')
-enter_pass = driver.find_element(By.ID, f"login-password")
-enter_pass.send_keys('qa_test@2025')
-driver.find_element(By.ID, f"login-button-submit").click()
-
-time.sleep(8)
-
-driver.find_element(By.XPATH, f"//div[@href='/bookings/add']").click()
-time.sleep(3)
-
-
-
 def get_locators(master_element):
     elements = driver.find_elements(By.XPATH, f"//{master_element}")
     print(f'{len(elements)} Elements Found In The Page For The Given Element: {master_element} ')
     locator_count = 0
     finial_locators = []
     if (master_element == 'input'):
-
         elements_with_placeholder = driver.find_elements(By.XPATH, f"//div[contains(@class,'-placeholder')]")
-
         for j, element_with_placeholder in enumerate(elements_with_placeholder):
             locators = []
             locators_with_index = {}
@@ -117,12 +99,12 @@ get_locators(element)
 
 element = 'input'
 get_locators(element)
-#
-# element = 'a'
-# get_locators(element)
-#
-# element = 'p'
-# get_locators(element)
+
+element = 'a'
+get_locators(element)
+
+element = 'p'
+get_locators(element)
 
 
 workbook.save("locators.xlsx")
